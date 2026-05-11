@@ -1,0 +1,21 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Your Cart">
+  <h1>Your Shopping Cart</h1>
+  <div id="cart-items">
+    <!-- Cart logic handled by JS or Supabase session -->
+    <p>Your cart is currently empty.</p>
+  </div>
+  <button id="checkout-btn">Proceed to Checkout</button>
+  
+  <script>
+    // Simple client-side checkout trigger
+    document.getElementById('checkout-btn')?.addEventListener('click', async () => {
+      const res = await fetch('/api/create-checkout-session', { method: 'POST' });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+    });
+  </script>
+</MainLayout>

@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - {title}</title>
+    <link rel="stylesheet" href="/styles/theme.css" />
+  </head>
+  <body class="admin-layout">
+    <aside>
+      <h2>Admin Panel</h2>
+      <nav>
+        <a href="/admin">Dashboard</a>
+        <a href="/admin/orders">Orders</a>
+      </nav>
+    </aside>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
